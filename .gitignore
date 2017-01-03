@@ -1,0 +1,12 @@
+*.rbc
+*.swp
+.DS_Store
+/.idea
+/.rdoc
+/.rvmrc
+/TAGS
+/doc
+/misc
+/notes.txt
+/pkg
+/tmp

@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+require File.expand_path("../../lib/stupidedi", __FILE__)
+require "pp"
+
+# Short-lived processes should win some peformance gains here
+GC.disable
+
+# This will be auto-enabled when $stdout.tty?, but -C forces color output
+require "term/ansicolor" if ARGV.delete("-C")
+
+config = Stupidedi::Config.contrib(Stupidedi::Config.hipaa(Stupidedi::Config.default))
+parser = Stupidedi::Builder::StateMachine.build(config)
+start  = Time.now
+nondet = ARGV.delete('-N')
+
+ARGV.each do |path|
+  # Reading the entire input at once is slightly faster than streaming
+  # from a file handle.
+  # content   = File.read(path, :encoding => "ISO-8859-1")
+  # parser, r = parser.read(Stupidedi::Reader.build(content))
+
+  File.open(path) do |io|
+    parser, _result = parser.read(Stupidedi::Reader.build(io))
+  end
+end
+
+stop = Time.now
+
+parser.zipper.map{|z| pp z.root.node }.explain do
+  # Multiple parse trees (non-deterministic state)
+  unless nondet
+    puts "Non-deterministic state"
+  else
+    puts "Non-deterministic states (#{parser.active.length}):"
+    puts "#{"-" * 70}\n\n"
+
+    parser.active.each do |state|
+      zipper = state.node.zipper
+      pp zipper.root.node
+      puts "\n#{"-" * 70}\n\n"
+    end
+  end
+end
+
+begin
+  a = parser.first
+  b = parser.last
+
+  a.flatmap{|a1| b.flatmap{|b1| a1.distance(b1) }}.
+    tap{|d| puts "#{d + 1} segments" }
+end
+
+puts "%0.3f seconds" % (stop - start)
