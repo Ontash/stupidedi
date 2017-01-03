@@ -128,10 +128,8 @@ module Stupidedi
                   designator = "#{segment_tok.id}#{'%02d' % (n + 1)}"
                   designator = designator + "-%02d" % m unless m.nil?
 
-
                   raise ArgumentError,
                     "#{value.inspect} is not allowed in #{designator}"
-
                 end
               end
             end
@@ -164,10 +162,8 @@ module Stupidedi
                   designator = "#{segment_tok.id}#{'%02d' % n}"
                   designator = designator + "-%02d" % m unless m.nil?
 
-
                   raise ArgumentError,
                     "#{value.inspect} is not allowed in #{designator}"
-
                 end
               end
             end

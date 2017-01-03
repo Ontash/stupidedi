@@ -108,8 +108,8 @@ module Stupidedi
         lspine.each{|z| between << z.node }
         lspine.tail.reverse.each do |zipper1|
           until zipper1.last?
-            zipper1 = zipper1.next
-            between.concat(zipper1.flatten)
+            zipper2 = zipper1.next
+            between.concat(zipper2.flatten)
           end
         end
 

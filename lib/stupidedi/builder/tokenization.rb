@@ -163,13 +163,9 @@ module Stupidedi
       def mkcomposite_tok(components, composite_use, designator, position)
         component_uses = composite_use.definition.component_uses
 
-
-
         if components.length > component_uses.length
-          i=0
           raise ArgumentError,
             "#{designator} has only #{component_uses.length} components"
-
         end
 
         component_idx  = "0"
