@@ -92,10 +92,12 @@ module Stupidedi
               end
             end
 
+
             def reason(zipper)
               present = indexes.select{|n| zipper.child(n - 1).node.present? }
               "only one of elements #{present.join(", ")} may be present"
             end
+
           end
 
           class << E

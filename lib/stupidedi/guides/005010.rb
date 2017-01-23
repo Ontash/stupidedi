@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 module Stupidedi
   include Refinements
 
@@ -33,25 +32,25 @@ module Stupidedi
         autoload :HC837P,  "stupidedi/guides/005010/X222A1-HC837P"
       end
 
-    # module X223
-    #   autoload :HC837I,  "stupidedi/guides/005010/X223-HC837I"
-    # end
+      module X223
+        autoload :HC837I,  "stupidedi/guides/005010/X223-HC837I"
+      end
 
-    # module X223A1
-    #   autoload :HC837I,  "stupidedi/guides/005010/X223A1-HC837I"
-    # end
+      # module X223A1
+      #   autoload :HC837I,  "stupidedi/guides/005010/X223A1-HC837I"
+      # end
 
-    # module X224
-    #   autoload :HC837D,  "stupidedi/guides/005010/X224-HC837D"
-    # end
+      # module X224
+      #   autoload :HC837D,  "stupidedi/guides/005010/X224-HC837D"
+      # end
 
-    # module X224A1
-    #   autoload :HC837D,  "stupidedi/guides/005010/X224A1-HC837D"
-    # end
+      # module X224A1
+      #   autoload :HC837D,  "stupidedi/guides/005010/X224A1-HC837D"
+      # end
 
-    # module X224A2
-    #   autoload :HC837D,  "stupidedi/guides/005010/X224A2-HC837D"
-    # end
+      # module X224A2
+      #   autoload :HC837D,  "stupidedi/guides/005010/X224A2-HC837D"
+      # end
 
       module X231
         autoload :FA999,  "stupidedi/guides/005010/X231-FA999"

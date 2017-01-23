@@ -109,22 +109,37 @@ module Stupidedi
       def critique(zipper, descriptor = "")
         if zipper.node.simple? or zipper.node.component?
           if zipper.node.invalid?
+
             raise Exceptions::ParseError,
               "invalid element #{descriptor}"
+
           elsif zipper.node.blank?
             if zipper.node.usage.required?
+=begin
               raise Exceptions::ParseError,
                 "required element #{descriptor} is blank"
+=end
             end
           elsif zipper.node.usage.forbidden?
             raise Exceptions::ParseError,
               "forbidden element #{descriptor} is present"
+
+
+
           elsif not zipper.node.allowed?
             raise Exceptions::ParseError,
               "value #{zipper.node.to_s} not allowed in element #{descriptor}"
+
+
+
+
           elsif zipper.node.too_long?
+
+
             raise Exceptions::ParseError,
               "value is too long in element #{descriptor}"
+
+
           elsif zipper.node.too_short?
             raise Exceptions::ParseError,
               "value is too short in element #{descriptor}"
@@ -133,8 +148,11 @@ module Stupidedi
         elsif zipper.node.composite?
           if zipper.node.blank?
             if zipper.node.usage.required?
+              i-0
+=begin
               raise Exceptions::ParseError,
                 "required element #{descriptor} is blank"
+=end
             end
           elsif zipper.node.usage.forbidden?
             raise Exceptions::ParseError,
@@ -148,8 +166,11 @@ module Stupidedi
               d = zipper.node.definition
               d.syntax_notes.each do |s|
                 unless s.satisfied?(zipper)
+                  y=0
+
                   raise Exceptions::ParseError,
                     "for element #{descriptor}, #{s.reason(zipper)}"
+
                 end
               end
             end

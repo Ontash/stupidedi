@@ -116,7 +116,8 @@ module Stupidedi
                     s::PWK.use(4200, r::Optional,  d::RepeatCount.bounded(10)),
                     s::CR1.use(4250, r::Optional,  d::RepeatCount.bounded(1)),
                     s::CR2.use(4300, r::Optional,  d::RepeatCount.bounded(5)),
-                    s::CR3.use(4350, r::Optional,  d::RepeatCount.bounded(1)),
+                    s::CR3.use(
+                        0, r::Optional,  d::RepeatCount.bounded(1)),
                   # s::CR4.use(4400, r::Optional,  d::RepeatCount.bounded(3)),
                   # s::CR5.use(4450, r::Optional,  d::RepeatCount.bounded(1)),
                     s::CRC.use(4500, r::Optional,  d::RepeatCount.bounded(3)),
@@ -157,7 +158,7 @@ module Stupidedi
                       s:: LQ.use(5510, r::Optional,  d::RepeatCount.bounded(1)),
                       s::FRM.use(5520, r::Mandatory, d::RepeatCount.bounded(99)))))),
 
-              s:: SE.use(5550, r::Mandatory, d::RepeatCount.bounded(1))))
+              s:: SE.use(5550, r::Optional, d::RepeatCount.bounded(1))))
 
         end
       end
